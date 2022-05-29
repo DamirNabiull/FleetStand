@@ -52,6 +52,16 @@
     transition: 1s linear;
 }
 
+.BigImage {
+    position: absolute;
+    width: 2042.88px;
+    height: 1590.93px;
+    margin-left: 58.56px;
+    margin-top: 857.09px;
+    z-index: 500;
+    display: none;
+}
+
 .card {
     position: relative;
     width: 413.18px;

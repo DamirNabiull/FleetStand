@@ -61,6 +61,15 @@ const descriptions = [
     document.getElementById("desc6")
 ]
 
+const bigImages = [
+    document.getElementById("bi1"),
+    document.getElementById("bi2"),
+    document.getElementById("bi3"),
+    document.getElementById("bi4"),
+    document.getElementById("bi5"),
+    document.getElementById("bi6")
+]
+
 // const element = document.getElementById("con");
 
 var currentCard = null;
@@ -71,6 +80,7 @@ var currentHelper = null;
 var currentTitle = null;
 var currentDescription = null;
 var currentState = null;
+var currentBigImage = null;
 var currIndex = -1;
 
 var prevCard = null;
@@ -81,18 +91,36 @@ var prevHelper = null;
 var prevTitle = null;
 var prevDescription = null;
 var prevState = null;
+var prevBigImage = null;
 var prevBlocked = false;
 var prevIndex = -1;
 
 var contPosition = 0;
 var range = 0;
 var openTimer = null;
+var slideIndex = 1;
 
 for (var i = 0; i < buttons.length; i++) {
     buttons[i].onclick = function () {
         if (!blocked) {
             openContentCompletly();
         }
+    }
+}
+
+var allImages = document.getElementsByClassName("mySlides")
+for (var i = 0; i < allImages.length; i++) {
+    allImages[i].onclick = function() {
+        console.log(currentBigImage);
+        setBigImage();
+        currentBigImage.style.display = "block";
+    }
+}
+
+var allBigImages = document.getElementsByClassName("BigImage")
+for (var i = 0; i < allBigImages.length; i++) {
+    allBigImages[i].onclick = function() {
+        currentBigImage.style.display = "none";
     }
 }
 
@@ -135,8 +163,6 @@ ipc.on("position-changed", function (evt, message) {
 
 // SCROLL
 
-var slideIndex = 1;
-
 // Next/previous controls
 function plusSlides(n) {
     showSlides(slideIndex += n);
@@ -145,6 +171,11 @@ function plusSlides(n) {
 // Thumbnail image controls
 function currentSlide(n) {
     showSlides(slideIndex = n);
+}
+
+function setBigImage() {
+    var slides = currentSlider.getElementsByClassName("mySlides");
+    currentBigImage.src = slides[slideIndex - 1].getElementsByClassName("sliderImage")[0].src;
 }
 
 function showSlides(n) {
@@ -253,6 +284,7 @@ function closeAnim() {
     prevBlocked = true;
     console.log("closeAnim");
     console.log(prevState);
+    prevBigImage.style.display = "none";
     if (prevState > 2) {
         closeContentCompletly();
         setTimeout(function () {
@@ -287,6 +319,7 @@ function replaceCurrentPrev() {
         prevDescription = currentDescription;
         prevState = currentState;
         prevFirstImage = currentFirstImage;
+        prevBigImage = currentBigImage;
         prevIndex = currIndex;
     
         currentState = 0;
@@ -304,6 +337,7 @@ function setCurrent() {
         currentHelper = helpers[currIndex];
         currentTitle = titles[currIndex];
         currentDescription = descriptions[currIndex];
+        currentBigImage = bigImages[currIndex];
         slideIndex = 1;
         showSlides(1);
         openAnim();
@@ -331,4 +365,3 @@ setInterval(() => {
         currIndex = -1;
     }
 }, 5);
-
