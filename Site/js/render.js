@@ -110,8 +110,8 @@ for (var i = 0; i < buttons.length; i++) {
 
 var allImages = document.getElementsByClassName("mySlides")
 for (var i = 0; i < allImages.length; i++) {
-    allImages[i].onclick = function() {
-        console.log(currentBigImage);
+    allImages[i].onclick = function () {
+        currentHelper.getElementsByClassName("Cancel")[0].style.display = "block";
         setBigImage();
         currentBigImage.style.display = "block";
     }
@@ -119,8 +119,17 @@ for (var i = 0; i < allImages.length; i++) {
 
 var allBigImages = document.getElementsByClassName("BigImage")
 for (var i = 0; i < allBigImages.length; i++) {
-    allBigImages[i].onclick = function() {
+    allBigImages[i].onclick = function () {
         currentBigImage.style.display = "none";
+        currentHelper.getElementsByClassName("Cancel")[0].style.display = "none";
+    }
+}
+
+var allCancel = document.getElementsByClassName("Cancel")
+for (var i = 0; i < allCancel.length; i++) {
+    allCancel[i].onclick = function () {
+        currentBigImage.style.display = "none";
+        currentHelper.getElementsByClassName("Cancel")[0].style.display = "none";
     }
 }
 
@@ -285,6 +294,7 @@ function closeAnim() {
     console.log("closeAnim");
     console.log(prevState);
     prevBigImage.style.display = "none";
+    prevHelper.getElementsByClassName("Cancel")[0].style.display = "none";
     if (prevState > 2) {
         closeContentCompletly();
         setTimeout(function () {
@@ -309,7 +319,7 @@ function replaceCurrentPrev() {
     if (currentState > 0 && !prevBlocked) {
         console.log("replaceCurrentPrev");
         clearTimeout(openTimer);
-    
+
         prevCard = currentCard;
         prevContent = currentContent;
         prevSlider = currentSlider;
@@ -321,9 +331,9 @@ function replaceCurrentPrev() {
         prevFirstImage = currentFirstImage;
         prevBigImage = currentBigImage;
         prevIndex = currIndex;
-    
+
         currentState = 0;
-    
+
         closeAnim();
     }
 }

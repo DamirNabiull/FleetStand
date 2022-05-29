@@ -62,6 +62,17 @@
     display: none;
 }
 
+.Cancel {
+    position: absolute;
+    width: 79.36px;
+    height: 79.36px;
+    margin-left: 1987.69px;
+    margin-top: 881.35px;
+    z-index: 501;
+    background-color: transparent;
+    display: none;
+}
+
 .card {
     position: relative;
     width: 413.18px;
