@@ -364,4 +364,4 @@ setInterval(() => {
         replaceCurrentPrev();
         currIndex = -1;
     }
-}, 5);
+}, 1);
