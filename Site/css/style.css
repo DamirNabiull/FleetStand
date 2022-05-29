@@ -1,0 +1,268 @@
+@font-face {
+    font-family: "New_Zelek";
+    src: url("../../Assets/Fonts/NEW_ZELEK_[ALLFONT.RU].TTF") format("truetype");
+}
+
+@font-face {
+    font-family: "Montserrat_Bold";
+    src: url("../../Assets/Fonts/MONTSERRAT-BOLD.TTF") format("truetype");
+}
+
+@font-face {
+    font-family: "Montserrat_Regular";
+    src: url("../../Assets/Fonts/MONTSERRAT-REGULAR.TTF") format("truetype");
+}
+
+* {
+    top: 0;
+    left: 0;
+    /* overflow-y: hidden;  */
+}
+
+/* body {
+    background-image: url(back.jpg);
+    background-size: initial;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    overflow-x: scroll;
+} */
+
+#myVideo {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 10704.38px;
+    height: 3840px;
+    z-index: -1000;
+}
+
+.helper {
+    /* display: flex;
+    align-items: flex-start;
+    justify-content: center; */
+    position: absolute;
+    z-index: 1;
+    width: 2160px;
+    height: 3840px;
+    background-color: transparent;
+    margin-left: 100px;
+    margin-right: 100px;
+    transition: 1s linear;
+}
+
+.card {
+    position: relative;
+    width: 413.18px;
+    height: 468.48px;
+    margin-top: 241.15px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: transparent;
+    background-image: url(../../Assets/card_back.png);
+    background-repeat: no-repeat;
+    background-size: initial;
+    background-position: center center;
+    transition: 0.5s linear;
+}
+
+.content {
+    position: relative;
+    width: 1328.64px;
+    height: 0px;
+    margin-left: auto;
+    margin-right: auto;
+    background-image: url(../../Assets/content_back.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: top center;
+    transition: 0.5s linear;
+}
+
+.images_scroller {
+    width: 1328.64px;
+}
+
+.show_info {
+    height: 79.2;
+    width: 324.1;
+    margin-left: 502.27px;
+    margin-top: 80.4px;
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.2s linear 0.4s;
+}
+
+h1,
+p {
+    text-align: center;
+}
+
+h1 {
+    font-family: 'New_Zelek';
+    font-style: normal;
+}
+
+.card_date,
+.card_year,
+.card_description {
+    color: #FFFFFF;
+    width: 413.18px;
+}
+
+.card_date {
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 131px;
+    margin-top: 10px;
+}
+
+.card_year {
+    font-weight: 400;
+    font-size: 100px;
+    line-height: 131px;
+    margin-top: -50px;
+}
+
+.card_description {
+    margin-top: 44.8px;
+    font-family: 'Montserrat_Bold';
+    font-weight: 700;
+    font-size: 31.52px;
+    line-height: 52.5px;
+    letter-spacing: 0%;
+    text-transform: uppercase;
+}
+
+.content_title {
+    color: #0039A6;
+    width: 1328.52px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 77.5399px;
+    line-height: 97px;
+    margin-top: 1.67px;
+    opacity: 0;
+    text-transform: uppercase;
+    transition: 0.5s linear;
+}
+
+.content_description {
+    font-family: 'Montserrat_Regular';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 29.184px;
+    line-height: 36px;
+    text-align: justify;
+    width: 1160.51px;
+    height: 593.18px;
+    margin-left: 84px;
+    opacity: 0;
+    transition: 0.3s linear 0.2s;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+#helper_1 {
+    margin-left: 1442.3px;
+}
+
+#helper_2 {
+    margin-left: 1939.3px;
+}
+
+#helper_3 {
+    margin-left: 2436.3px;
+}
+
+#helper_4 {
+    margin-left: 2933.3px;
+}
+
+#helper_5 {
+    margin-left: 3430.3px;
+}
+
+#helper_6 {
+    margin-left: 3927.3px;
+}
+
+
+
+
+
+
+
+/* Slideshow container */
+.slideshow-container {
+    position: relative;
+    width: 1232.88px;
+    height: 960.17px;
+    margin-left: 47.88px;
+    object-fit: cover;
+    object-position: 0% 0%;
+    opacity: 0;
+    transition: 0.5s linear;
+}
+
+.mySlides {
+    display: none;
+}
+
+.sliderImage {
+    width: 100%;
+    height: 0px;
+    margin-top: 59.45px;
+    transition: 0.5s linear;
+}
+
+.prev,
+.next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: 150px;
+    padding-top: 300px;
+    padding-bottom: 300px;
+    margin-top: -230px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    text-align: center;
+    user-select: none;
+    background-image: url(../../Assets/ArrowLeft.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: initial;
+    left: -40px;
+}
+
+.next {
+    left: 1139.88px;
+    background-image: url(../../Assets/ArrowRight.png);
+}
+
+.doter {
+    position: relative;
+    margin: auto;
+    margin-top: -80px;
+}
+
+.dot {
+    cursor: pointer;
+    height: 16.79px;
+    width: 16.79px;
+    margin-top: -20px;
+    margin: 0px 15px;
+    background-color: rgba(255, 255, 255, 0.73);
+    display: inline-block;
+}
+
+.active,
+.dot:hover {
+    background-color: #0039A6;
+}
