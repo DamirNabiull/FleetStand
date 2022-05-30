@@ -165,9 +165,9 @@ var blocked = false;
 const ipc = require("electron").ipcRenderer;
 
 ipc.on("position-changed", function (evt, message) {
-    // position = message.pos * maxPosition;
-    // window.scrollTo(position, 0);
-    // console.log(window.scrollX);
+    position = Math.floor(message.pos * maxPosition);
+    window.scrollTo(position, 0);
+    console.log(window.scrollX);
 });
 
 // SCROLL
@@ -354,9 +354,10 @@ function setCurrent() {
     }
 }
 
+var positionNow = 0;
 setInterval(() => {
-    position = window.scrollX;
-    contPosition = position - 1442.3;
+    positionNow = window.scrollX;
+    contPosition = positionNow - 1442.3;
     if (contPosition >= 0) {
         range = contPosition % 497.66;
         if (range < 356.59 && range > 56.59) {

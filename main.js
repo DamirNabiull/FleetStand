@@ -11,12 +11,12 @@ function showPortOpen() {
 }
 
 function readSerialData(data) {
-	// try {
-	// 	newValue = Math.floor(data.toString('utf8'));
-	// } catch (error) {
-	// 	newValue = currentValue;
-	// }
-	// currentValue = (newValue) / maxValue;
+	try {
+		newValue = Math.floor(data.toString('utf8'));
+	} catch (error) {
+		newValue = currentValue;
+	}
+	currentValue = newValue;
 }
 
 function showPortClose() {
@@ -65,16 +65,9 @@ app.whenReady().then(() => {
 	});
 
 	setInterval(() => {
-		currentValue += temp;
-		if (currentValue >= 9999) {
-			temp = -temp;
-		}
-		else if (currentValue <= 0) {
-			temp = -temp;
-		}
-		var pos = currentValue/maxValue
+		var pos = currentValue / maxValue;
 		win.webContents.send("position-changed", { pos });
-	}, 50);
+	}, 1);
 
 	win.loadFile('Site/index.html');
 })
