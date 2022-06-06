@@ -4,7 +4,17 @@ const helpers = [
     document.getElementById("helper_3"),
     document.getElementById("helper_4"),
     document.getElementById("helper_5"),
-    document.getElementById("helper_6")
+    document.getElementById("helper_6"),
+    document.getElementById("helper_7"),
+    document.getElementById("helper_8"),
+    document.getElementById("helper_9"),
+    document.getElementById("helper_10"),
+    document.getElementById("helper_11"),
+    document.getElementById("helper_12"),
+    document.getElementById("helper_13"),
+    document.getElementById("helper_14"),
+    document.getElementById("helper_15"),
+    document.getElementById("helper_16")
 ];
 
 const cards = [
@@ -13,7 +23,17 @@ const cards = [
     document.getElementById("c3"),
     document.getElementById("c4"),
     document.getElementById("c5"),
-    document.getElementById("c6")
+    document.getElementById("c6"),
+    document.getElementById("c7"),
+    document.getElementById("c8"),
+    document.getElementById("c9"),
+    document.getElementById("c10"),
+    document.getElementById("c11"),
+    document.getElementById("c12"),
+    document.getElementById("c13"),
+    document.getElementById("c14"),
+    document.getElementById("c15"),
+    document.getElementById("c16")
 ];
 
 const sliders = [
@@ -22,7 +42,17 @@ const sliders = [
     document.getElementById("slide3"),
     document.getElementById("slide4"),
     document.getElementById("slide5"),
-    document.getElementById("slide6")
+    document.getElementById("slide6"),
+    document.getElementById("slide7"),
+    document.getElementById("slide8"),
+    document.getElementById("slide9"),
+    document.getElementById("slide10"),
+    document.getElementById("slide11"),
+    document.getElementById("slide12"),
+    document.getElementById("slide13"),
+    document.getElementById("slide14"),
+    document.getElementById("slide15"),
+    document.getElementById("slide16")
 ]
 
 const buttons = [
@@ -31,7 +61,17 @@ const buttons = [
     document.getElementById("but3"),
     document.getElementById("but4"),
     document.getElementById("but5"),
-    document.getElementById("but6")
+    document.getElementById("but6"),
+    document.getElementById("but7"),
+    document.getElementById("but8"),
+    document.getElementById("but9"),
+    document.getElementById("but10"),
+    document.getElementById("but11"),
+    document.getElementById("but12"),
+    document.getElementById("but13"),
+    document.getElementById("but14"),
+    document.getElementById("but15"),
+    document.getElementById("but16")
 ]
 
 const contents = [
@@ -40,7 +80,17 @@ const contents = [
     document.getElementById("con3"),
     document.getElementById("con4"),
     document.getElementById("con5"),
-    document.getElementById("con6")
+    document.getElementById("con6"),
+    document.getElementById("con7"),
+    document.getElementById("con8"),
+    document.getElementById("con9"),
+    document.getElementById("con10"),
+    document.getElementById("con11"),
+    document.getElementById("con12"),
+    document.getElementById("con13"),
+    document.getElementById("con14"),
+    document.getElementById("con15"),
+    document.getElementById("con16")
 ]
 
 const titles = [
@@ -49,7 +99,17 @@ const titles = [
     document.getElementById("title3"),
     document.getElementById("title4"),
     document.getElementById("title5"),
-    document.getElementById("title6")
+    document.getElementById("title6"),
+    document.getElementById("title7"),
+    document.getElementById("title8"),
+    document.getElementById("title9"),
+    document.getElementById("title10"),
+    document.getElementById("title11"),
+    document.getElementById("title12"),
+    document.getElementById("title13"),
+    document.getElementById("title14"),
+    document.getElementById("title15"),
+    document.getElementById("title16")
 ]
 
 const descriptions = [
@@ -58,7 +118,17 @@ const descriptions = [
     document.getElementById("desc3"),
     document.getElementById("desc4"),
     document.getElementById("desc5"),
-    document.getElementById("desc6")
+    document.getElementById("desc6"),
+    document.getElementById("desc7"),
+    document.getElementById("desc8"),
+    document.getElementById("desc9"),
+    document.getElementById("desc10"),
+    document.getElementById("desc11"),
+    document.getElementById("desc12"),
+    document.getElementById("desc13"),
+    document.getElementById("desc14"),
+    document.getElementById("desc15"),
+    document.getElementById("desc16")
 ]
 
 const bigImages = [
@@ -67,7 +137,17 @@ const bigImages = [
     document.getElementById("bi3"),
     document.getElementById("bi4"),
     document.getElementById("bi5"),
-    document.getElementById("bi6")
+    document.getElementById("bi6"),
+    document.getElementById("bi7"),
+    document.getElementById("bi8"),
+    document.getElementById("bi9"),
+    document.getElementById("bi10"),
+    document.getElementById("bi11"),
+    document.getElementById("bi12"),
+    document.getElementById("bi13"),
+    document.getElementById("bi14"),
+    document.getElementById("bi15"),
+    document.getElementById("bi16")
 ]
 
 // const element = document.getElementById("con");
@@ -153,8 +233,8 @@ const content_photo_height = 960.17;
 const card_initial_margin = 241.15;
 const card_end_margin = 388.61;
 
-// const maxPosition = 8544.38;
-const maxPosition = 8784.38;
+const maxPosition = 8544.38;
+// const maxPosition = 8784.38;
 
 const openAnimOpacity = "0.2s linear 0.4s";
 const closeAnimOpacity = "0.2s linear";
@@ -162,12 +242,18 @@ const closeAnimOpacity = "0.2s linear";
 var position = 0;
 var blocked = false;
 
+alert("Снала откалибруйте рельсу - Вправо / Влево. Переведите экран в крайнее левое положение. Нажмите ОК");
+
 const ipc = require("electron").ipcRenderer;
 
 ipc.on("position-changed", function (evt, message) {
-    position = Math.floor(message.pos * maxPosition);
-    window.scrollTo(position, 0);
-    console.log(window.scrollX);
+    position = Math.floor(message.pos / 9999 * maxPosition);
+    window.scrollTo({
+        left: position,
+        behavior: "smooth"
+    });
+    //window.scrollTo(position, 0);
+    //console.log(`podition : ${position}`);
 });
 
 // SCROLL
@@ -285,14 +371,14 @@ function openAnim() {
         openCard()
         openTimer = setTimeout(function () {
             openContentImageOnly();
-        }, 3000);
+        }, 1500);
     }
 }
 
 function closeAnim() {
     prevBlocked = true;
     console.log("closeAnim");
-    console.log(prevState);
+    //console.log(prevState);
     prevBigImage.style.display = "none";
     prevHelper.getElementsByClassName("Cancel")[0].style.display = "none";
     if (prevState > 2) {
@@ -354,15 +440,17 @@ function setCurrent() {
     }
 }
 
-var positionNow = 0;
+// openAnim();
+// window.scrollTo(600, 1000);
+
 setInterval(() => {
-    positionNow = window.scrollX;
-    contPosition = positionNow - 1442.3;
+    //console.log(`positionNow : ${position}`);
+    contPosition = position - 365;
     if (contPosition >= 0) {
-        range = contPosition % 497.66;
+        range = contPosition % 497;
         if (range < 356.59 && range > 56.59) {
-            currIndex = Math.floor(contPosition / 497.66);
-            if (currIndex < 12 || (currIndex == prevIndex && !prevBlocked)) {
+            currIndex = Math.floor(contPosition / 497);
+            if (currIndex < 16 || (currIndex == prevIndex && !prevBlocked)) {
                 setCurrent();
             }
         }
@@ -375,4 +463,4 @@ setInterval(() => {
         replaceCurrentPrev();
         currIndex = -1;
     }
-}, 1);
+}, 100);

@@ -16,7 +16,8 @@
 * {
     top: 0;
     left: 0;
-    /* overflow-y: hidden;  */
+    overflow-y: hidden;
+    overflow-x: hidden;
 }
 
 /* body {
@@ -188,34 +189,68 @@ h1 {
 }
 
 #helper_1 {
-    margin-left: 1442.3px;
+    margin-left: 569.3px;
 }
 
 #helper_2 {
-    margin-left: 1939.3px;
+    margin-left: 1066.3px;
 }
 
 #helper_3 {
-    margin-left: 2436.3px;
+    margin-left: 1536.3px;
 }
 
 #helper_4 {
-    margin-left: 2933.3px;
+    margin-left: 2060.3px;
 }
 
 #helper_5 {
-    margin-left: 3430.3px;
+    margin-left: 2567.3px;
 }
 
 #helper_6 {
-    margin-left: 3927.3px;
+    margin-left: 3054.3px;
 }
 
+#helper_7 {
+    margin-left: 3551.3px;
+}
 
+#helper_8 {
+    margin-left: 4048.3px;
+}
 
+#helper_9 {
+    margin-left: 4545.3px;
+}
 
+#helper_10 {
+    margin-left: 5042.3px;
+}
 
+#helper_11 {
+    margin-left: 5539.3px;
+}
 
+#helper_12 {
+    margin-left: 6036.3px;
+}
+
+#helper_13 {
+    margin-left: 6533.3px;
+}
+
+#helper_14 {
+    margin-left: 7030.3px;
+}
+
+#helper_15 {
+    margin-left: 7527.3px;
+}
+
+#helper_16 {
+    margin-left: 8024.3px;
+}
 
 /* Slideshow container */
 .slideshow-container {
@@ -227,6 +262,8 @@ h1 {
     object-position: 0% 0%;
     opacity: 0;
     transition: 0.5s linear;
+    overflow-y: visible;
+    overflow-x: visible;
 }
 
 .mySlides {
@@ -244,27 +281,29 @@ h1 {
 .next {
     cursor: pointer;
     position: absolute;
-    top: 50%;
-    width: 150px;
-    padding-top: 300px;
-    padding-bottom: 300px;
-    margin-top: -230px;
+    top: 100%;
+    width: 80px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    margin-top: 81px;
     color: white;
     font-weight: bold;
     font-size: 18px;
     transition: 0.6s ease;
     text-align: center;
     user-select: none;
-    background-image: url(../../Assets/ArrowLeft.png);
+    /* background-color: #0039A6; */
+    background-image: url(../../Assets/Left.png);
     background-repeat: no-repeat;
     background-position: center center;
-    background-size: initial;
-    left: -40px;
+    background-size: contain;
+    left: 366px;
+    z-index: 200;
 }
 
 .next {
-    left: 1139.88px;
-    background-image: url(../../Assets/ArrowRight.png);
+    left: 787px;
+    background-image: url(../../Assets/Right.png);
 }
 
 .doter {

@@ -3,6 +3,10 @@ var newValue = 0;
 var currentValue = 0;
 const maxValue = 9999;
 var temp = 100;
+var pos = 0;
+var ind = 0;
+var read = true;
+var win;
 const { SerialPort } = require('serialport')
 const { ReadlineParser } = require('@serialport/parser-readline')
 
@@ -11,12 +15,19 @@ function showPortOpen() {
 }
 
 function readSerialData(data) {
-	try {
+	if (read) {
 		newValue = Math.floor(data.toString('utf8'));
-	} catch (error) {
-		newValue = currentValue;
+		//console.log(`NewValue : ${newValue}`);
+		if (!isNaN(newValue)) {
+			currentValue = newValue;
+		}
 	}
-	currentValue = newValue;
+}
+
+function getValue() {
+	var tempValue = Math.floor(currentValue - pos);
+	//console.log(`Temp : ${tempValue}`);
+	return tempValue;
 }
 
 function showPortClose() {
@@ -42,7 +53,7 @@ port.on('close', showPortClose);
 port.on('error', showError);
 
 app.whenReady().then(() => {
-	const win = new BrowserWindow({
+	win = new BrowserWindow({
 		width: 1920,
 		height: 1080,
 		transparent: false,
@@ -64,10 +75,14 @@ app.whenReady().then(() => {
 		skipTransformProcessType: false,
 	});
 
+	pos = 0;
+	
 	setInterval(() => {
-		var pos = currentValue / maxValue;
+		pos += getValue();
 		win.webContents.send("position-changed", { pos });
-	}, 1);
+		//console.log(pos);
+	}, 100);
+	
 
 	win.loadFile('Site/index.html');
 })
