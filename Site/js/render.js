@@ -247,11 +247,14 @@ alert("Снала откалибруйте рельсу - Вправо / Вле�
 const ipc = require("electron").ipcRenderer;
 
 ipc.on("position-changed", function (evt, message) {
+    // position = window.scrollX;
+
     position = Math.floor(message.pos / 9999 * maxPosition);
     window.scrollTo({
         left: position,
         behavior: "smooth"
     });
+
     //window.scrollTo(position, 0);
     //console.log(`podition : ${position}`);
 });
